@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Facebook } from "lucide-react";
 import type { AppLocale } from "@/i18n/routing";
 import { CONTACT } from "@/lib/site";
+import { alternatesFor, ogLocale, localizedUrl } from "@/lib/seo/urls";
 
 export async function generateMetadata({
   params,
@@ -10,7 +11,17 @@ export async function generateMetadata({
   params: { locale: AppLocale };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "Contact" });
-  return { title: t("title") };
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+    alternates: alternatesFor("contact", params.locale),
+    openGraph: {
+      title: t("title"),
+      description: t("subtitle"),
+      url: localizedUrl(params.locale, "contact"),
+      ...ogLocale(params.locale),
+    },
+  };
 }
 
 export default async function ContactPage({ params }: { params: { locale: AppLocale } }) {
@@ -23,7 +34,9 @@ export default async function ContactPage({ params }: { params: { locale: AppLoc
     { icon: Phone, label: t("phone"), value: CONTACT.phone, href: `tel:${CONTACT.phoneIntl}` },
     { icon: MessageCircle, label: "WhatsApp", value: CONTACT.phone, href: waHref },
     { icon: Mail, label: t("email"), value: CONTACT.email, href: `mailto:${CONTACT.email}` },
-    { icon: Facebook, label: "Facebook", value: t("facebookCta"), href: CONTACT.facebook },
+    ...(CONTACT.facebook
+      ? [{ icon: Facebook, label: "Facebook", value: t("facebookCta"), href: CONTACT.facebook }]
+      : []),
   ];
 
   return (

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="David Motorcycles">
+  <rect width="512" height="512" rx="96" fill="#fbf6ec"/>
+  <circle cx="256" cy="150" r="70" fill="none" stroke="#2f8ea0" stroke-width="18"/>
+  <path d="M96 372a64 64 0 1 0 128 0 64 64 0 1 0-128 0Z" fill="none" stroke="#241b10" stroke-width="22"/>
+  <path d="M288 372a64 64 0 1 0 128 0 64 64 0 1 0-128 0Z" fill="none" stroke="#241b10" stroke-width="22"/>
+  <path d="M160 372l70-96h120l40 60" fill="none" stroke="#f2751c" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M230 276h96" stroke="#f2751c" stroke-width="26" stroke-linecap="round"/>
+</svg>

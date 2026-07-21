@@ -1,7 +1,12 @@
 import type { Config } from "tailwindcss";
 
-// Adventure-riding vibe: warm charcoal base, dust/sand neutrals, bold KTM-orange
-// accent. One display face (condensed) + Rubik body (covers he / en / ru).
+// "Road-trip" vibe: sunny, warm, open road. Cream/sand surfaces, clay-brown
+// text, sunset-orange accent, dusty-sky teal secondary.
+// NOTE: palette names are kept from the earlier dark theme so components need
+// no edits — only the values changed.
+//   asphalt = LIGHT surfaces (950 lightest → 600 = border)
+//   dust    = TEXT scale     (50 darkest → 500 lightest)
+//   ember   = sunset accent · route = sky/teal accent
 const config: Config = {
   darkMode: ["class"],
   content: ["./src/**/*.{ts,tsx}", "./messages/**/*.json"],
@@ -13,34 +18,35 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // warm near-black surfaces
         asphalt: {
-          950: "#0d0b0a",
-          900: "#151210",
-          800: "#1f1a17",
-          700: "#2a231e",
-          600: "#3a312a",
+          950: "#fbf6ec", // page background (warm cream)
+          900: "#ffffff", // cards / header / footer
+          800: "#f2e9d6", // image placeholder tiles
+          700: "#eaddc4",
+          600: "#dccba6", // borders
         },
-        // dust / sand neutrals
         dust: {
-          50: "#f7f3ec",
-          100: "#efe8db",
-          200: "#ddd0ba",
-          300: "#c7b492",
-          400: "#b09a72",
-          500: "#94805c",
+          50: "#241b10", // brightest headings (now darkest)
+          100: "#352817", // body text
+          200: "#4c3b26", // nav / strong body
+          300: "#6d5a41", // muted
+          400: "#8c7659", // labels
+          500: "#ab9a7e", // faint / placeholder
         },
-        // trail orange accent
         ember: {
-          400: "#ff8a3d",
-          500: "#f2681c",
-          600: "#d9530f",
-          700: "#b3420c",
+          400: "#ff9d52",
+          500: "#f2751c",
+          600: "#d95f10",
+          700: "#b34a0c",
         },
-        // support: olive/khaki for tags
+        route: {
+          400: "#5cb4c5",
+          500: "#2f8ea0",
+          600: "#22707e",
+        },
         moss: {
-          500: "#6b7040",
-          600: "#565a33",
+          500: "#7a7f4a",
+          600: "#63683a",
         },
       },
       fontFamily: {
@@ -49,11 +55,11 @@ const config: Config = {
       },
       backgroundImage: {
         "trail-grit":
-          "radial-gradient(120% 120% at 50% 0%, rgba(242,104,28,0.10) 0%, rgba(13,11,10,0) 55%)",
+          "radial-gradient(120% 90% at 50% -10%, rgba(242,117,28,0.10) 0%, rgba(47,142,160,0.06) 40%, rgba(251,246,236,0) 70%)",
       },
       boxShadow: {
-        trail: "0 20px 45px -20px rgba(0,0,0,0.75)",
-        ember: "0 0 0 1px rgba(242,104,28,0.35), 0 12px 30px -12px rgba(242,104,28,0.45)",
+        trail: "0 18px 40px -24px rgba(70,50,25,0.35)",
+        ember: "0 0 0 1px rgba(242,117,28,0.30), 0 14px 34px -14px rgba(242,117,28,0.45)",
       },
       keyframes: {
         "fade-up": {

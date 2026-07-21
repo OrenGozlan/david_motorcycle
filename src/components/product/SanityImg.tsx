@@ -1,28 +1,25 @@
 import Image from "next/image";
-import type { SanityImage } from "@/lib/sanity/queries";
-import { urlForImage } from "@/lib/sanity/image";
 import { cn } from "@/lib/utils";
 
-// Renders a Sanity image, or a branded placeholder tile when missing/unconfigured.
+// Renders a catalog image from an already-resolved URL (Sanity CDN or a local
+// /products path), or a branded placeholder tile when missing.
 export function SanityImg({
-  image,
+  url,
   alt,
   className,
   sizes,
+  priority,
 }: {
-  image?: SanityImage | null;
+  url?: string | null;
   alt: string;
   className?: string;
   sizes?: string;
+  priority?: boolean;
 }) {
-  const url = urlForImage(image ?? undefined);
   if (!url) {
     return (
       <div
-        className={cn(
-          "flex items-center justify-center bg-asphalt-800 text-dust-500",
-          className,
-        )}
+        className={cn("flex items-center justify-center bg-asphalt-800 text-dust-500", className)}
         aria-hidden
       >
         <span className="font-display text-xs uppercase tracking-[0.3em]">Denimotoparts</span>
@@ -34,6 +31,7 @@ export function SanityImg({
       src={url}
       alt={alt}
       fill
+      priority={priority}
       sizes={sizes ?? "(max-width: 768px) 100vw, 33vw"}
       className={cn("object-cover", className)}
     />

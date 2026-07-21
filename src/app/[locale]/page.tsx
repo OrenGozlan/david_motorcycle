@@ -7,6 +7,7 @@ import { pickI18n } from "@/lib/sanity/locale";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { SanityImg } from "@/components/product/SanityImg";
 import { ContactCTA } from "@/components/product/ContactCTA";
+import { HeroVideo } from "@/components/HeroVideo";
 
 export default async function HomePage({ params }: { params: { locale: AppLocale } }) {
   setRequestLocale(params.locale);
@@ -17,26 +18,29 @@ export default async function HomePage({ params }: { params: { locale: AppLocale
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-asphalt-600/60">
-        <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(242,104,28,0.18),transparent_60%)]" />
-        <div className="container-page relative py-24 md:py-32">
-          <p className="font-display text-sm uppercase tracking-[0.4em] text-ember-500">
-            {t("kicker")}
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-bold uppercase leading-[1.05] text-dust-50 md:text-6xl">
-            {t("title")}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-dust-200">{t("subtitle")}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/products" className="btn-ember">
-              {t("ctaBrowse")} <ArrowRight size={18} />
-            </Link>
-            <Link href="/contact" className="btn-ghost">
-              {t("ctaVisit")}
-            </Link>
-          </div>
+      <HeroVideo>
+        <p className="font-display text-sm uppercase tracking-[0.4em] text-ember-400">
+          {t("kicker")}
+        </p>
+        <h1
+          id="hero-title"
+          className="mt-4 max-w-3xl text-4xl font-bold uppercase leading-[1.05] text-white drop-shadow md:text-6xl"
+        >
+          {t("title")}
+        </h1>
+        <p className="mt-6 max-w-xl text-lg text-white/90 drop-shadow">{t("subtitle")}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/products" className="btn-ember">
+            {t("ctaBrowse")} <ArrowRight size={18} />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-white/60 px-5 py-3 font-display font-semibold uppercase tracking-wider text-white transition hover:bg-white/10"
+          >
+            {t("ctaVisit")}
+          </Link>
         </div>
-      </section>
+      </HeroVideo>
 
       {/* Categories */}
       {categories.length > 0 && (
@@ -50,7 +54,7 @@ export default async function HomePage({ params }: { params: { locale: AppLocale
                 className="card-surface group relative aspect-square overflow-hidden"
               >
                 <SanityImg
-                  image={c.image}
+                  url={c.imageUrl}
                   alt={pickI18n(c.title, locale)}
                   className="transition duration-500 group-hover:scale-105"
                 />

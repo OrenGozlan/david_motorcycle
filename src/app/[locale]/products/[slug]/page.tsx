@@ -3,9 +3,12 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { routing, Link, type AppLocale } from "@/i18n/routing";
 import { getAllProductSlugs, getProductBySlug } from "@/lib/sanity/queries";
-import { pickI18n } from "@/lib/sanity/locale";
+import { pickI18n, pickI18nLang } from "@/lib/sanity/locale";
 import { SanityImg } from "@/components/product/SanityImg";
 import { ContactCTA } from "@/components/product/ContactCTA";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { productLd, breadcrumbLd } from "@/lib/seo/jsonld";
+import { alternatesFor, ogLocale, localizedUrl } from "@/lib/seo/urls";
 
 export async function generateStaticParams() {
   const slugs = await getAllProductSlugs();
@@ -23,7 +26,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const product = await getProductBySlug(params.slug);
   if (!product) return {};
-  return { title: pickI18n(product.title, params.locale) };
+  const name = pickI18n(product.title, params.locale);
+  const description = pickI18n(product.description, params.locale).slice(0, 155);
+  const img = product.imageUrls?.[0];
+  return {
+    title: name,
+    description,
+    alternates: alternatesFor(`products/${params.slug}`, params.locale),
+    openGraph: {
+      title: name,
+      description,
+      url: localizedUrl(params.locale, `products/${params.slug}`),
+      ...(img ? { images: [img] } : {}),
+      ...ogLocale(params.locale),
+    },
+  };
 }
 
 export default async function ProductPage({
@@ -37,36 +54,62 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const t = await getTranslations({ locale, namespace: "Product" });
-  const title = pickI18n(product.title, locale);
-  const description = pickI18n(product.description, locale);
-  const images = product.images ?? [];
+  const title = pickI18nLang(product.title, locale);
+  const desc = pickI18nLang(product.description, locale);
+  const catName = product.category ? pickI18n(product.category.title, locale) : undefined;
+  const images = product.imageUrls ?? [];
+
+  const trail = [
+    { name: t("home"), path: "" },
+    { name: t("products"), path: "products" },
+    ...(product.category ? [{ name: catName!, path: `categories/${product.category.slug}` }] : []),
+    { name: title.text, path: `products/${params.slug}` },
+  ];
 
   return (
     <div className="container-page py-10">
-      <nav className="mb-6 text-sm text-dust-400">
-        <Link href="/products" className="hover:text-ember-400">
-          {t("backToProducts")}
-        </Link>
-        {product.category && (
-          <>
-            <span className="mx-2">/</span>
-            <Link href={`/categories/${product.category.slug}`} className="hover:text-ember-400">
-              {pickI18n(product.category.title, locale)}
+      <JsonLd
+        data={[
+          productLd(locale, {
+            name: title.text,
+            description: desc.text,
+            slug: params.slug,
+            brand: product.brand,
+            imageUrls: images,
+            categoryName: catName,
+          }),
+          breadcrumbLd(locale, trail),
+        ]}
+      />
+
+      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-dust-400">
+        <ol className="flex flex-wrap items-center gap-2">
+          <li>
+            <Link href="/products" className="hover:text-ember-600">
+              {t("products")}
             </Link>
-          </>
-        )}
+          </li>
+          {product.category && (
+            <li className="flex items-center gap-2">
+              <span aria-hidden>/</span>
+              <Link href={`/categories/${product.category.slug}`} className="hover:text-ember-600">
+                {catName}
+              </Link>
+            </li>
+          )}
+        </ol>
       </nav>
 
       <div className="grid gap-10 lg:grid-cols-2">
         <div className="space-y-4">
           <div className="card-surface relative aspect-square overflow-hidden">
-            <SanityImg image={images[0]} alt={title} sizes="(max-width: 1024px) 100vw, 50vw" />
+            <SanityImg url={images[0]} alt={title.text} sizes="(max-width: 1024px) 100vw, 50vw" priority />
           </div>
           {images.length > 1 && (
             <div className="grid grid-cols-4 gap-3">
               {images.slice(1, 5).map((img, i) => (
                 <div key={i} className="card-surface relative aspect-square overflow-hidden">
-                  <SanityImg image={img} alt={`${title} ${i + 2}`} sizes="25vw" />
+                  <SanityImg url={img} alt={`${title.text} ${i + 2}`} sizes="25vw" />
                 </div>
               ))}
             </div>
@@ -74,23 +117,30 @@ export default async function ProductPage({
         </div>
 
         <div>
-          {product.category && (
-            <div className="text-sm uppercase tracking-wider text-ember-500">
-              {pickI18n(product.category.title, locale)}
-            </div>
+          {catName && (
+            <div className="text-sm uppercase tracking-wider text-ember-600">{catName}</div>
           )}
-          <h1 className="mt-1 text-3xl font-bold uppercase text-dust-50 md:text-4xl">{title}</h1>
+          <h1
+            lang={title.lang}
+            dir={title.dir}
+            className="mt-1 text-3xl font-bold uppercase text-dust-50 md:text-4xl"
+          >
+            {title.text}
+          </h1>
           {product.brand && <div className="mt-2 text-dust-300">{product.brand}</div>}
 
-          {description && (
-            <div className="mt-6 space-y-3 text-dust-200">
-              {description.split("\n").filter(Boolean).map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
+          {desc.text && (
+            <div lang={desc.lang} dir={desc.dir} className="mt-6 space-y-3 text-dust-200">
+              {desc.text
+                .split("\n")
+                .filter(Boolean)
+                .map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
             </div>
           )}
 
-          <ContactCTA locale={locale} productName={title} className="mt-8" />
+          <ContactCTA locale={locale} productName={title.text} className="mt-8" />
         </div>
       </div>
     </div>

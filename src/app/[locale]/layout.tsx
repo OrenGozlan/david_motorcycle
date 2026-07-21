@@ -3,9 +3,12 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { routing, RTL_LOCALES, type AppLocale } from "@/i18n/routing";
-import { brandName } from "@/lib/site";
+import { brandName, asset } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { orgGraph } from "@/lib/seo/jsonld";
+import { alternatesFor, ogLocale, localizedUrl } from "@/lib/seo/urls";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -24,7 +27,15 @@ export async function generateMetadata({
   return {
     title: { default: title, template: `%s · ${brandName(locale)}` },
     description,
-    openGraph: { type: "website", siteName: brandName(locale), title, description },
+    alternates: alternatesFor("", locale),
+    openGraph: {
+      type: "website",
+      siteName: brandName(locale),
+      title,
+      description,
+      url: localizedUrl(locale, ""),
+      ...ogLocale(locale),
+    },
     twitter: { card: "summary_large_image", title, description },
   };
 }
@@ -45,6 +56,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir}>
       <head>
+        <link rel="icon" href={asset("/icon.svg")} type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -53,6 +65,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="bg-trail-grit">
+        <JsonLd data={orgGraph(locale)} />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="flex min-h-screen flex-col">
             <Header locale={locale} />

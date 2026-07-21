@@ -1,8 +1,29 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
 import type { AppLocale } from "@/i18n/routing";
 import { getCategories, getProducts } from "@/lib/sanity/queries";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { CategoryNav } from "@/components/product/CategoryNav";
+import { alternatesFor, ogLocale, localizedUrl } from "@/lib/seo/urls";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: AppLocale };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: "Products" });
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+    alternates: alternatesFor("products", params.locale),
+    openGraph: {
+      title: t("title"),
+      description: t("subtitle"),
+      url: localizedUrl(params.locale, "products"),
+      ...ogLocale(params.locale),
+    },
+  };
+}
 
 export default async function ProductsPage({ params }: { params: { locale: AppLocale } }) {
   setRequestLocale(params.locale);

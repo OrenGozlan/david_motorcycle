@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Phone, Mail, MapPin, Clock, Facebook, MessageCircle } from "lucide-react";
 import type { AppLocale } from "@/i18n/routing";
-import { brandName, BRAND_LATIN, CONTACT } from "@/lib/site";
+import { brandName, BRAND_LATIN, CONTACT, branchName } from "@/lib/site";
 import { Link } from "@/i18n/routing";
 
 export async function Footer({ locale }: { locale: AppLocale }) {
@@ -15,50 +15,61 @@ export async function Footer({ locale }: { locale: AppLocale }) {
           <div className="font-display text-lg font-bold uppercase tracking-widest text-dust-50">
             {brandName(locale)}
           </div>
-          <div className="mt-1 text-xs uppercase tracking-[0.3em] text-ember-500">{BRAND_LATIN}</div>
+          <div className="mt-1 text-xs uppercase tracking-[0.3em] text-ember-600">{BRAND_LATIN}</div>
           <p className="mt-4 max-w-xs text-sm text-dust-300">{t("tagline")}</p>
         </div>
 
         <div className="space-y-3 text-sm text-dust-200">
           <div className="font-display uppercase tracking-wider text-dust-400">{t("contact")}</div>
-          <a href={`tel:${CONTACT.phoneIntl}`} className="flex items-center gap-2 hover:text-ember-400">
-            <Phone size={16} /> {CONTACT.phone}
+          <a href={`tel:${CONTACT.phoneIntl}`} className="flex items-center gap-2 hover:text-ember-600">
+            <Phone size={16} aria-hidden /> {CONTACT.phone}
           </a>
-          <a href={waHref} className="flex items-center gap-2 hover:text-ember-400" target="_blank" rel="noreferrer">
-            <MessageCircle size={16} /> WhatsApp
+          <a href={waHref} className="flex items-center gap-2 hover:text-ember-600" target="_blank" rel="noreferrer">
+            <MessageCircle size={16} aria-hidden /> WhatsApp
           </a>
-          <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-ember-400">
-            <Mail size={16} /> {CONTACT.email}
+          <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-ember-600">
+            <Mail size={16} aria-hidden /> {CONTACT.email}
           </a>
-          <a href={CONTACT.facebook} className="flex items-center gap-2 hover:text-ember-400" target="_blank" rel="noreferrer">
-            <Facebook size={16} /> Facebook
-          </a>
+          {CONTACT.facebook && (
+            <a href={CONTACT.facebook} className="flex items-center gap-2 hover:text-ember-600" target="_blank" rel="noreferrer">
+              <Facebook size={16} aria-hidden /> Facebook
+            </a>
+          )}
         </div>
 
-        <div className="space-y-3 text-sm text-dust-200">
+        <address className="space-y-3 text-sm not-italic text-dust-200">
           <div className="font-display uppercase tracking-wider text-dust-400">{t("visit")}</div>
           {CONTACT.locations.map((loc) => (
-            <div key={loc.en} className="flex items-center gap-2">
-              <MapPin size={16} /> {loc[locale] ?? loc.en}
+            <div key={loc.city} className="flex items-center gap-2">
+              <MapPin size={16} aria-hidden /> {branchName(loc, locale)}
             </div>
           ))}
           <div className="flex items-center gap-2">
-            <Clock size={16} /> {CONTACT.hours}
+            <Clock size={16} aria-hidden /> {CONTACT.hours}
           </div>
-        </div>
+        </address>
       </div>
 
       <div className="border-t border-asphalt-600/60 py-4">
         <div className="container-page flex flex-wrap items-center justify-between gap-2 text-xs text-dust-400">
           <span>© {brandName(locale)}</span>
-          <div className="flex gap-4">
-            <Link href="/about" className="hover:text-ember-400">
+          <nav aria-label={t("legal")} className="flex flex-wrap gap-4">
+            <Link href="/about" className="hover:text-ember-600">
               {t("about")}
             </Link>
-            <Link href="/contact" className="hover:text-ember-400">
+            <Link href="/faq" className="hover:text-ember-600">
+              {t("faq")}
+            </Link>
+            <Link href="/contact" className="hover:text-ember-600">
               {t("contact")}
             </Link>
-          </div>
+            <Link href="/privacy" className="hover:text-ember-600">
+              {t("privacy")}
+            </Link>
+            <Link href="/accessibility" className="hover:text-ember-600">
+              {t("accessibility")}
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

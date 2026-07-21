@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import type { AppLocale } from "@/i18n/routing";
 import { ContactCTA } from "@/components/product/ContactCTA";
+import { alternatesFor, ogLocale, localizedUrl } from "@/lib/seo/urls";
 
 export async function generateMetadata({
   params,
@@ -9,7 +10,18 @@ export async function generateMetadata({
   params: { locale: AppLocale };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "About" });
-  return { title: t("title") };
+  const body = t.raw("body") as string[];
+  return {
+    title: t("title"),
+    description: body?.[0],
+    alternates: alternatesFor("about", params.locale),
+    openGraph: {
+      title: t("title"),
+      description: body?.[0],
+      url: localizedUrl(params.locale, "about"),
+      ...ogLocale(params.locale),
+    },
+  };
 }
 
 export default async function AboutPage({ params }: { params: { locale: AppLocale } }) {

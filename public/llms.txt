@@ -1,0 +1,30 @@
+# David Motorcycles (דוד אופנועים) — Denimotoparts
+
+> Boutique motorcycle & scooter gear shop in Israel, run by David. Sells
+> helmets, intercoms, jackets, gloves, body armor, locks & security, storage
+> boxes, covers, chains and accessories — adventure, off-road and street riding
+> gear, at the best prices in Israel. Two physical shops: Moshia 36, Tel Aviv,
+> and Dror 2, Tzur Hadassah. Ordering is by WhatsApp or phone (+972-54-776-1717);
+> no online checkout. Also offers repairs, towing, trailer rental, battery
+> replacement, tyre changes and brake service. Hours 11:00–20:00.
+> Languages: Hebrew (primary), English, Russian.
+
+## Main pages
+- [Home](https://orengozlan.github.io/david_motorcycle/he/): brand overview and featured gear
+- [Products](https://orengozlan.github.io/david_motorcycle/he/products/): full catalog by category
+- [About](https://orengozlan.github.io/david_motorcycle/he/about/): who we are and services
+- [FAQ](https://orengozlan.github.io/david_motorcycle/he/faq/): common buyer questions answered
+- [Contact](https://orengozlan.github.io/david_motorcycle/he/contact/): addresses, phone, WhatsApp, hours
+
+## Product categories
+- [Helmets / קסדות](https://orengozlan.github.io/david_motorcycle/he/categories/helmets/)
+- [Jackets / מעילים](https://orengozlan.github.io/david_motorcycle/he/categories/jackets/)
+- [Intercoms / אינטרקום ותקשורת](https://orengozlan.github.io/david_motorcycle/he/categories/intercoms/)
+- [Covers / כיסויים](https://orengozlan.github.io/david_motorcycle/he/categories/covers/)
+- [Accessories / אביזרים](https://orengozlan.github.io/david_motorcycle/he/categories/chains-accessories/)
+
+## Optional
+- [English home](https://orengozlan.github.io/david_motorcycle/en/)
+- [Russian home](https://orengozlan.github.io/david_motorcycle/ru/)
+
+<!-- NOTE: update these URLs when a custom domain at root is set. llms.txt/robots.txt only take effect at a domain root, not on the /david_motorcycle sub-path. -->
