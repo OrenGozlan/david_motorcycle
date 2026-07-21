@@ -1,0 +1,73 @@
+{
+  "Meta": {
+    "title": "David Motorcycles — Gear & Parts",
+    "description": "Adventure riding gear, parts and accessories for motorcycles and scooters. Helmets, jackets, gloves and more."
+  },
+  "Nav": {
+    "products": "Products",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Footer": {
+    "tagline": "Gear and parts for motorcycles and scooters — the best prices in Israel.",
+    "contact": "Get in touch",
+    "visit": "Come visit",
+    "about": "About"
+  },
+  "Home": {
+    "kicker": "Adventure · Off-road · Street",
+    "title": "Riding Gear Built For The Road",
+    "subtitle": "Helmets, jackets, gloves, security and accessories — picked for real riders. David's boutique motorcycle gear store.",
+    "ctaBrowse": "Browse catalog",
+    "ctaVisit": "Visit the shop",
+    "shopByCategory": "Shop by category",
+    "featured": "Featured",
+    "viewAll": "View all",
+    "helpTitle": "Need advice?",
+    "helpBody": "Talk to David — we help you pick the right gear for you and your bike."
+  },
+  "Products": {
+    "title": "Products",
+    "subtitle": "All gear and parts, by category.",
+    "all": "All",
+    "empty": "No products to show yet. Check back soon or get in touch."
+  },
+  "Product": {
+    "backToProducts": "All products",
+    "brand": "Brand"
+  },
+  "Cta": {
+    "whatsapp": "Ask on WhatsApp",
+    "call": "Call us",
+    "note": "No online ordering yet — happy to help on WhatsApp or by phone.",
+    "waGeneric": "Hi David, I'd like some details about your gear.",
+    "waProduct": "Hi David, I'm interested in: {name}. Can you share details?"
+  },
+  "About": {
+    "title": "About David Motorcycles",
+    "body": [
+      "A boutique store for motorcycle and scooter gear and parts — adventure, off-road and street riding.",
+      "We help riders choose the right gear at the best prices in Israel, with personal service at two locations: Tel Aviv and Tzur Hadassah."
+    ],
+    "servicesTitle": "Services",
+    "services": [
+      "Repairs & maintenance",
+      "Towing & recovery",
+      "Trailer rentals",
+      "Battery replacement",
+      "Tire changes",
+      "Brake service"
+    ]
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "Call, message us on WhatsApp, or come visit.",
+    "phone": "Phone",
+    "email": "Email",
+    "locations": "Locations",
+    "hours": "Opening hours",
+    "byAppointment": "By appointment",
+    "facebookCta": "Follow us",
+    "waGeneric": "Hi David, I'd like some details about your gear."
+  }
+}

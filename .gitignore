@@ -1,0 +1,33 @@
+# deps
+node_modules
+.pnpm-store
+
+# next
+.next
+out
+next-env.d.ts
+
+# env
+.env
+.env.local
+.env.*.local
+
+# sanity
+.sanity
+dist
+
+# misc
+.DS_Store
+*.log
+.vscode
+.idea
+
+# cache
+.turbo
+*.tsbuildinfo
+
+# playwright MCP scratch
+.playwright-mcp/
+
+# seed scratch input
+scripts/catalog-input.json
