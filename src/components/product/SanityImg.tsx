@@ -1,8 +1,12 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { asset } from "@/lib/site";
 
 // Renders a catalog image from an already-resolved URL (Sanity CDN or a local
 // /products path), or a branded placeholder tile when missing.
+// NOTE: next/image with `unoptimized` does NOT prepend basePath, so local
+// (root-relative) URLs must be prefixed manually with asset(); absolute Sanity
+// CDN URLs are left as-is.
 export function SanityImg({
   url,
   alt,
@@ -26,9 +30,10 @@ export function SanityImg({
       </div>
     );
   }
+  const src = url.startsWith("http") ? url : asset(url);
   return (
     <Image
-      src={url}
+      src={src}
       alt={alt}
       fill
       priority={priority}

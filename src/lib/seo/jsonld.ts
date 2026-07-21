@@ -82,7 +82,9 @@ export function productLd(
     ...(p.description ? { description: p.description.slice(0, 400) } : {}),
     ...(p.brand ? { brand: { "@type": "Brand", name: p.brand } } : {}),
     ...(p.categoryName ? { category: p.categoryName } : {}),
-    ...(p.imageUrls.length ? { image: p.imageUrls } : {}),
+    ...(p.imageUrls.length
+      ? { image: p.imageUrls.map((u) => (u.startsWith("http") ? u : absUrl(asset(u)))) }
+      : {}),
     url: localizedUrl(locale, `products/${p.slug}`),
   };
 }

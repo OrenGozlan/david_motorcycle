@@ -33,6 +33,15 @@ export function HeroVideo({ children }: { children: React.ReactNode }) {
         aria-hidden
       />
       <div className="container-page relative py-28 md:py-40">{children}</div>
+      {/* CC BY 3.0 attribution for the Commons hero clip (required). */}
+      <a
+        href="https://commons.wikimedia.org/wiki/File:2011_08_15_Riding_to_Palm_Valley_by_DR650.webm"
+        target="_blank"
+        rel="noreferrer"
+        className="absolute bottom-2 end-3 text-[10px] text-white/55 hover:text-white/80"
+      >
+        Ride footage: vfr800hu · CC BY 3.0
+      </a>
     </section>
   );
 }
