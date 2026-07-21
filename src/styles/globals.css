@@ -11,8 +11,11 @@
   html {
     scroll-behavior: smooth;
   }
+  html {
+    @apply bg-asphalt-950;
+  }
   body {
-    @apply bg-asphalt-950 text-dust-100 font-sans antialiased;
+    @apply text-dust-100 font-sans antialiased;
   }
   h1, h2, h3 {
     @apply font-display font-semibold tracking-wide text-dust-50;

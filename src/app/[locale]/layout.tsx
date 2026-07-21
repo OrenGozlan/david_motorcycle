@@ -6,6 +6,7 @@ import { routing, RTL_LOCALES, type AppLocale } from "@/i18n/routing";
 import { brandName, asset } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SiteBackground } from "@/components/SiteBackground";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { orgGraph } from "@/lib/seo/jsonld";
 import { alternatesFor, ogLocale, localizedUrl } from "@/lib/seo/urls";
@@ -64,7 +65,8 @@ export default async function LocaleLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-trail-grit">
+      <body>
+        <SiteBackground />
         <JsonLd data={orgGraph(locale)} />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="flex min-h-screen flex-col">
