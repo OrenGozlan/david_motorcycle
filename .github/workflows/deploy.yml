@@ -2,7 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # `main` for production; scaffold branch included so the review site
+    # deploys before a main branch exists. Drop the scaffold branch on merge.
+    branches: [main, feat/phase-1-scaffold]
   # Sanity webhook → repository_dispatch rebuilds when David publishes content.
   repository_dispatch:
     types: [sanity-publish]
