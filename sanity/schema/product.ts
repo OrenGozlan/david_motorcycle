@@ -33,6 +33,14 @@ export const product = defineType({
       of: [{ type: "image", options: { hotspot: true } }],
     }),
     defineField({ name: "description", title: "Description", type: "localizedText" }),
+    defineField({
+      name: "sizes",
+      title: "Sizes",
+      description: "Available sizes — type each and press Enter (e.g. S, M, L, XL, 42, One Size).",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { layout: "tags" },
+    }),
     // Phase 1 = view-only, no price field. Price added in phase 2 (orders/payment).
     defineField({
       name: "featured",

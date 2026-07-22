@@ -45,7 +45,8 @@
     "backToProducts": "All products",
     "products": "Products",
     "home": "Home",
-    "brand": "Brand"
+    "brand": "Brand",
+    "sizes": "Sizes"
   },
   "Cta": {
     "whatsapp": "Ask on WhatsApp",
@@ -86,14 +87,38 @@
     "title": "Frequently asked questions",
     "subtitle": "What every rider should know before buying.",
     "items": [
-      { "q": "Where are David Motorcycles' shops in Israel?", "a": "We have two shops: Moshia 36, Tel Aviv, and Dror 2, Tzur Hadassah. Open 11:00–20:00; booking ahead is recommended." },
-      { "q": "Can I order online?", "a": "There's no online cart yet. Order easily via WhatsApp or by phone at +972-54-776-1717 — David helps you choose and arranges pickup or delivery." },
-      { "q": "Which helmet and intercom brands do you carry?", "a": "A range of adventure, off-road and street helmets, plus rider intercom and communication systems. The catalog updates — contact us for a specific model and size." },
-      { "q": "How do I pick the right helmet or jacket size?", "a": "Measure head circumference for a helmet, and chest/height for a jacket. David guides your sizing in-store or on WhatsApp using the manufacturer charts." },
-      { "q": "Is there a warranty on products?", "a": "All products are genuine and come with the manufacturer's warranty. Terms vary by brand — ask us about a specific model." },
-      { "q": "What other services do you provide?", "a": "Repairs & maintenance, towing & recovery, trailer rentals, battery replacement, tire changes and brake service." },
-      { "q": "Do you ship nationwide?", "a": "We can arrange nationwide delivery or self-pickup from either shop. Delivery details are arranged on WhatsApp." },
-      { "q": "How can I pay?", "a": "Payment is handled directly with David at the time of order or pickup. Payment methods are arranged by phone or WhatsApp." }
+      {
+        "q": "Where are David Motorcycles' shops in Israel?",
+        "a": "We have two shops: Moshia 36, Tel Aviv, and Dror 2, Tzur Hadassah. Open 11:00–20:00; booking ahead is recommended."
+      },
+      {
+        "q": "Can I order online?",
+        "a": "There's no online cart yet. Order easily via WhatsApp or by phone at +972-54-776-1717 — David helps you choose and arranges pickup or delivery."
+      },
+      {
+        "q": "Which helmet and intercom brands do you carry?",
+        "a": "A range of adventure, off-road and street helmets, plus rider intercom and communication systems. The catalog updates — contact us for a specific model and size."
+      },
+      {
+        "q": "How do I pick the right helmet or jacket size?",
+        "a": "Measure head circumference for a helmet, and chest/height for a jacket. David guides your sizing in-store or on WhatsApp using the manufacturer charts."
+      },
+      {
+        "q": "Is there a warranty on products?",
+        "a": "All products are genuine and come with the manufacturer's warranty. Terms vary by brand — ask us about a specific model."
+      },
+      {
+        "q": "What other services do you provide?",
+        "a": "Repairs & maintenance, towing & recovery, trailer rentals, battery replacement, tire changes and brake service."
+      },
+      {
+        "q": "Do you ship nationwide?",
+        "a": "We can arrange nationwide delivery or self-pickup from either shop. Delivery details are arranged on WhatsApp."
+      },
+      {
+        "q": "How can I pay?",
+        "a": "Payment is handled directly with David at the time of order or pickup. Payment methods are arranged by phone or WhatsApp."
+      }
     ]
   },
   "Privacy": {
@@ -101,11 +126,38 @@
     "updated": "Updated: July 2026",
     "intro": "David Motorcycles (Denimotoparts) respects your privacy. This policy explains what information is collected when you use the site and how we handle it.",
     "sections": [
-      { "h": "What we collect", "p": ["This is a view-only catalog site — there is no registration, user account or online payment.", "When you contact us by WhatsApp, phone or email, we receive the contact details and content you choose to share, in order to respond and provide service."] },
-      { "h": "Cookies & third-party services", "p": ["The site uses minimal cookies (e.g. to remember your display language).", "Fonts are loaded from Google Fonts, so Google may receive your IP address when the page loads."] },
-      { "h": "How we use information", "p": ["Information you share in an inquiry is used only to respond, advise and arrange an order or service. We do not sell or share it with third parties."] },
-      { "h": "Your rights", "p": ["You may contact us at any time to review, correct or delete information you provided."] },
-      { "h": "Contact", "p": ["For privacy questions: phone +972-54-776-1717, email davidr6r1@gmail.com."] }
+      {
+        "h": "What we collect",
+        "p": [
+          "This is a view-only catalog site — there is no registration, user account or online payment.",
+          "When you contact us by WhatsApp, phone or email, we receive the contact details and content you choose to share, in order to respond and provide service."
+        ]
+      },
+      {
+        "h": "Cookies & third-party services",
+        "p": [
+          "The site uses minimal cookies (e.g. to remember your display language).",
+          "Fonts are loaded from Google Fonts, so Google may receive your IP address when the page loads."
+        ]
+      },
+      {
+        "h": "How we use information",
+        "p": [
+          "Information you share in an inquiry is used only to respond, advise and arrange an order or service. We do not sell or share it with third parties."
+        ]
+      },
+      {
+        "h": "Your rights",
+        "p": [
+          "You may contact us at any time to review, correct or delete information you provided."
+        ]
+      },
+      {
+        "h": "Contact",
+        "p": [
+          "For privacy questions: phone +972-54-776-1717, email davidr6r1@gmail.com."
+        ]
+      }
     ]
   },
   "Accessibility": {
@@ -113,9 +165,26 @@
     "updated": "Updated: July 2026",
     "intro": "David Motorcycles (Denimotoparts) is committed to equal, accessible service for all customers, and works to make this site accessible per the Israeli Equal Rights for Persons with Disabilities Regulations (Service Accessibility Adjustments), 2013, and Israeli Standard SI 5568 based on WCAG 2.0 level AA.",
     "sections": [
-      { "h": "What is accessible", "p": ["The site is built with semantic structure and heading hierarchy, keyboard navigation, language and direction markup (Hebrew right-to-left), image alt text, color contrast and visible focus indicators.", "It works on modern browsers and mobile devices and supports text enlargement."] },
-      { "h": "Known limitations", "p": ["Some components or content may not yet be fully accessible. We continue to improve site accessibility on an ongoing basis."] },
-      { "h": "Accessibility contact", "p": ["Found an accessibility issue? We'd like to know and fix it. Accessibility coordinator: David — phone +972-54-776-1717, email davidr6r1@gmail.com.", "At our physical shops, adapted service can be arranged in advance."] }
+      {
+        "h": "What is accessible",
+        "p": [
+          "The site is built with semantic structure and heading hierarchy, keyboard navigation, language and direction markup (Hebrew right-to-left), image alt text, color contrast and visible focus indicators.",
+          "It works on modern browsers and mobile devices and supports text enlargement."
+        ]
+      },
+      {
+        "h": "Known limitations",
+        "p": [
+          "Some components or content may not yet be fully accessible. We continue to improve site accessibility on an ongoing basis."
+        ]
+      },
+      {
+        "h": "Accessibility contact",
+        "p": [
+          "Found an accessibility issue? We'd like to know and fix it. Accessibility coordinator: David — phone +972-54-776-1717, email davidr6r1@gmail.com.",
+          "At our physical shops, adapted service can be arranged in advance."
+        ]
+      }
     ]
   }
 }

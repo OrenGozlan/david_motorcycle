@@ -140,6 +140,22 @@ export default async function ProductPage({
             </div>
           )}
 
+          {product.sizes && product.sizes.length > 0 && (
+            <div className="mt-6">
+              <div className="text-sm uppercase tracking-wider text-dust-400">{t("sizes")}</div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {product.sizes.map((size) => (
+                  <span
+                    key={size}
+                    className="rounded-md border border-dust-700 px-3 py-1 text-sm text-dust-100"
+                  >
+                    {size}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
           <ContactCTA locale={locale} productName={title.text} className="mt-8" />
         </div>
       </div>
