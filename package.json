@@ -15,6 +15,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "seed": "tsx scripts/seed-catalog.ts",
+    "migrate": "tsx scripts/migrate-static-to-sanity.ts",
     "translate": "tsx scripts/translate-ui.ts",
     "studio:dev": "sanity dev",
     "studio:deploy": "sanity deploy"

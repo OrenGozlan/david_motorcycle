@@ -20,12 +20,13 @@ export type Product = {
   featured?: boolean;
   imageUrls: string[];
   description?: LocalizedString;
+  sizes?: string[];
   category?: { title: LocalizedString; slug: string };
 };
 
 const CATEGORY_FIELDS = `_id, title, "slug": slug.current, order, "imageUrl": image.asset->url`;
 const PRODUCT_FIELDS = `
-  _id, title, "slug": slug.current, brand, featured, description,
+  _id, title, "slug": slug.current, brand, featured, description, sizes,
   "imageUrls": images[].asset->url,
   category->{ title, "slug": slug.current }
 `;

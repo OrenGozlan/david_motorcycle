@@ -30,5 +30,10 @@ Client: David (Denimotoparts). Owner/dev: Oren.
 - Git: branch per task, ask before push/deploy (Oren ships).
 - Content edits: `messages/he.json` first, keep en/ru in sync (`pnpm translate`).
 
+## Web admin (David edits catalog)
+- Standalone Sanity Studio → `<hostname>.sanity.studio` (`pnpm studio:deploy`, config `sanity.cli.ts`). Setup + David guide: `docs/WEB-ADMIN.md`.
+- Product `sizes`: free-form tag array (`sanity/schema/product.ts`); shown on product page. Still no price (phase 2).
+- Studio edits go live only after rebuild (push to `main`).
+
 ## Verify
 `pnpm typecheck && pnpm lint && pnpm build` → `out/`; `pnpm serve`; check `/he` RTL, `/en`, `/ru`, `/` redirect, WhatsApp CTA.
